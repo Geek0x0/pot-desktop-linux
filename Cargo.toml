@@ -123,7 +123,7 @@ assets = [
     ["data/icons/48x48/apps/com.pot-app.pot-gtk.png", "usr/share/icons/hicolor/48x48/apps/", "644"],
     ["data/icons/32x32/apps/com.pot-app.pot-gtk.png", "usr/share/icons/hicolor/32x32/apps/", "644"],
     ["data/icons/16x16/apps/com.pot-app.pot-gtk.png", "usr/share/icons/hicolor/16x16/apps/", "644"],
-    ["target/pot-gtk.mo/*", "usr/share/locale/", "644"],
+    ["target/pot-gtk.mo/**/*", "usr/share/locale/", "644"],
 ]
 
 [package.metadata.generate-rpm]
