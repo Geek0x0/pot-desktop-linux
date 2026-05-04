@@ -111,12 +111,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     wget \
     && rm -rf /var/lib/apt/lists/*
 
-RUN if [ -n "$FEATURES" ]; then \
-        cargo build --release --no-default-features --features "$FEATURES"; \
-    else \
-        cargo build --release; \
-    fi
-
 # Download linuxdeploy
 RUN wget -q "https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage" \
         -O /usr/local/bin/linuxdeploy \

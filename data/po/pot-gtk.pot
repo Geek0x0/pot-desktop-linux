@@ -112,6 +112,9 @@ msgstr ""
 msgid "Theme:"
 msgstr ""
 
+msgid "Auto Start:"
+msgstr ""
+
 msgid "System"
 msgstr ""
 

@@ -112,6 +112,9 @@ msgstr "语言："
 msgid "Theme:"
 msgstr "主题："
 
+msgid "Auto Start:"
+msgstr "开机自启："
+
 msgid "System"
 msgstr "跟随系统"
 

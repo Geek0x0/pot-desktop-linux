@@ -595,6 +595,25 @@ fn build_general_page(
     });
     append_setting_row(&general_section, &i18n::t("Theme:"), &theme_combo, true);
 
+    // Autostart
+    let autostart_sw = gtk::Switch::new();
+    autostart_sw.set_halign(gtk::Align::End);
+    autostart_sw.set_active(
+        config
+            .get("autostart_enabled")
+            .map(|v| v.as_bool().unwrap_or(false))
+            .unwrap_or_else(crate::core::autostart::is_enabled),
+    );
+    let sender_c = sender.input_sender().clone();
+    autostart_sw.connect_state_set(move |_sw, state| {
+        if let Err(e) = crate::core::autostart::set_enabled(state) {
+            log::warn!("Failed to set autostart: {}", e);
+        }
+        let _ = sender_c.send(ConfigMsg::SetBool("autostart_enabled".into(), state));
+        gtk::glib::Propagation::Proceed
+    });
+    append_toggle_setting_row(&general_section, &i18n::t("Auto Start:"), &autostart_sw);
+
     vbox.append(&general_section);
 
     // Proxy enable

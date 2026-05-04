@@ -90,6 +90,7 @@ services:
     image: pot-gtk:appimage-packager
     volumes:
       - cargo-cache:/usr/local/cargo/registry
+      - target-cache:/src/target
       - ./output:/output
     command: >
       bash -c "
@@ -146,3 +147,4 @@ services:
 
 volumes:
   cargo-cache:
+  target-cache:

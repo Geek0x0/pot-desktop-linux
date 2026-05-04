@@ -83,6 +83,7 @@ JavaScript plugins packaged as `.potext` archives (ZIP). Uses `boa_engine` as a 
 - **System Tray** — ksni (KDE StatusNotifierItem) with GTK fallback
 - **i18n** — 9 languages (de, es, fr, ja, ko, ru, zh_CN, zh_TW + template) via gettext
 - **Theme** — Light / Dark / System via libadwaita
+- **Autostart** — Auto start on login (XDG autostart)
 - **Proxy** — HTTP/HTTPS proxy configuration
 - **Update Checker** — GitHub Releases API
 
@@ -100,6 +101,7 @@ src/
 ├── util.rs                   # nanoid() ID generation
 │
 ├── core/                     # Platform infrastructure
+│   ├── autostart.rs          # Autostart management (XDG autostart)
 │   ├── clipboard.rs          # Clipboard monitoring (arboard)
 │   ├── font.rs               # System font enumeration (font-kit)
 │   ├── history.rs            # SQLite history store (rusqlite)
