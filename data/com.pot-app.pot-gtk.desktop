@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Pot GTK
+GenericName=Translation Tool
+Comment=Cross-platform translation and OCR tool (GTK4 native)
+Exec=pot-gtk
+Icon=com.pot-app.pot-gtk
+Terminal=false
+Type=Application
+Categories=Utility;Translation;Office;
+Keywords=translate;ocr;dictionary;tts;
+StartupNotify=true
+SingleMainWindow=true
+StartupWMClass=com.pot-app.pot-gtk

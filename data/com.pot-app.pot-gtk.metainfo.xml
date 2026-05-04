@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.pot-app.pot-gtk</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-only</project_license>
+  <name>Pot GTK</name>
+  <summary>Translation and OCR desktop tool (GTK4 native)</summary>
+  <description>
+    <p>Pot GTK is a native GTK4/libadwaita translation and OCR tool. It provides clipboard translation, screenshot OCR, text-to-speech, and supports multiple translation backends including Google, DeepL, OpenAI, Baidu, Youdao, and Bing.</p>
+  </description>
+  <launchable type="desktop-id">com.pot-app.pot-gtk.desktop</launchable>
+  <url type="homepage">https://github.com/Geek0x0/pot-desktop-linux</url>
+  <url type="bugtracker">https://github.com/Geek0x0/pot-desktop-linux/issues</url>
+  <developer_name>Kody</developer_name>
+  <content_rating type="oars-1.1" />
+  <requires>
+    <display_length compare="ge">360</display_length>
+  </requires>
+  <recommends>
+    <control>keyboard</control>
+    <control>pointing</control>
+    <control>touch</control>
+  </recommends>
+  <provides>
+    <binary>pot-gtk</binary>
+  </provides>
+</component>

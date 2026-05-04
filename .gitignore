@@ -1,0 +1,32 @@
+# Build artifacts
+/target/
+
+# Build output
+/output/
+
+# Cargo per-profile dirs
+**/debug/
+**/release/
+
+# IDE / editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Claude Code session files
+.claude/

@@ -1,0 +1,362 @@
+# Simplified Chinese translations for pot-gtk
+# Copyright (C) 2024 pot-app
+# This file is distributed under the same license as the pot-gtk package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: pot-gtk 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-29\n"
+"PO-Revision-Date: 2026-04-29\n"
+"Last-Translator: pot-app\n"
+"Language-Team: Chinese (Simplified)\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Pot"
+msgstr "Pot"
+
+msgid "Pin"
+msgstr "固定"
+
+msgid "Unpin"
+msgstr "取消固定"
+
+msgid "Close"
+msgstr "关闭"
+
+msgid "Swap"
+msgstr "交换"
+
+msgid "Translate"
+msgstr "翻译"
+
+msgid "Speak"
+msgstr "朗读"
+
+msgid "Collect"
+msgstr "收藏"
+
+msgid "(dictionary)"
+msgstr "（词典）"
+
+msgid "Error"
+msgstr "错误"
+
+msgid "Pot - OCR"
+msgstr "Pot - OCR"
+
+msgid "OCR Recognize"
+msgstr "OCR 识别"
+
+msgid "OCR Service"
+msgstr "OCR 服务"
+
+msgid "Copy text"
+msgstr "复制文本"
+
+msgid "Recognize"
+msgstr "识别"
+
+msgid "No image to recognize."
+msgstr "没有可识别的图片。"
+
+msgid "Image read error"
+msgstr "图片读取错误"
+
+msgid "OCR error"
+msgstr "OCR 错误"
+
+msgid "Pot - Settings"
+msgstr "Pot - 设置"
+
+msgid "Settings"
+msgstr "设置"
+
+msgid "About"
+msgstr "关于"
+
+msgid "Pot Desktop — GTK4 Edition"
+msgstr "Pot 桌面版 — GTK4"
+
+msgid "Version"
+msgstr "版本"
+
+msgid "Author"
+msgstr "作者"
+
+msgid "Repository"
+msgstr "仓库"
+
+msgid "General"
+msgstr "通用"
+
+msgid "Proxy"
+msgstr "代理"
+
+msgid "Services"
+msgstr "服务"
+
+msgid "Hotkey"
+msgstr "快捷键"
+
+msgid "Server Port:"
+msgstr "服务端口："
+
+msgid "Language:"
+msgstr "语言："
+
+msgid "Theme:"
+msgstr "主题："
+
+msgid "System"
+msgstr "跟随系统"
+
+msgid "Light"
+msgstr "浅色"
+
+msgid "Dark"
+msgstr "深色"
+
+msgid "Enable Proxy:"
+msgstr "启用代理："
+
+msgid "Proxy Host:"
+msgstr "代理地址："
+
+msgid "Proxy Port:"
+msgstr "代理端口："
+
+msgid "No Proxy:"
+msgstr "不代理："
+
+msgid "Source Language:"
+msgstr "源语言："
+
+msgid "Auto Detect"
+msgstr "自动检测"
+
+msgid "Target Language:"
+msgstr "目标语言："
+
+msgid "Delete Newlines:"
+msgstr "删除换行："
+
+msgid "Close on Blur:"
+msgstr "失焦关闭："
+
+msgid "Hotkeys"
+msgstr "快捷键"
+
+msgid "Click a shortcut, press the new keys, then restart the app to apply the change. Press Esc to cancel."
+msgstr "点击某个快捷键后直接按下新的组合键，重启应用后生效。按 Esc 取消。"
+
+msgid "Selection Translate"
+msgstr "划词翻译"
+
+msgid "Selection Translate:"
+msgstr "划词翻译："
+
+msgid "Input Translate"
+msgstr "输入翻译"
+
+msgid "Input Translate:"
+msgstr "输入翻译："
+
+msgid "OCR Recognize:"
+msgstr "OCR 识别："
+
+msgid "OCR Translate"
+msgstr "OCR 翻译"
+
+msgid "OCR Translate:"
+msgstr "OCR 翻译："
+
+msgid "Add Service"
+msgstr "添加服务"
+
+msgid "Add"
+msgstr "添加"
+
+msgid "Select a service to add:"
+msgstr "选择要添加的服务："
+
+msgid "Configure"
+msgstr "配置"
+
+msgid "Cancel"
+msgstr "取消"
+
+msgid "Save"
+msgstr "保存"
+
+msgid "Custom URL"
+msgstr "自定义 URL"
+
+msgid "Type"
+msgstr "类型"
+
+msgid "Free"
+msgstr "免费"
+
+msgid "API"
+msgstr "API"
+
+msgid "Auth Key"
+msgstr "认证密钥"
+
+msgid "Provider"
+msgstr "提供商"
+
+msgid "OpenAI"
+msgstr "OpenAI"
+
+msgid "API Key"
+msgstr "API 密钥"
+
+msgid "Model"
+msgstr "模型"
+
+msgid "Request URL"
+msgstr "请求地址"
+
+msgid "App ID"
+msgstr "应用 ID"
+
+msgid "Secret Key"
+msgstr "密钥"
+
+msgid "App Key"
+msgstr "应用密钥"
+
+msgid "Key"
+msgstr "密钥"
+
+msgid "Host"
+msgstr "主机"
+
+msgid "AnkiConnect URL"
+msgstr "AnkiConnect 地址"
+
+msgid "Deck"
+msgstr "牌组"
+
+msgid "Note Type"
+msgstr "笔记类型"
+
+msgid "Instance Name"
+msgstr "实例名称"
+
+msgid "Pot - Updater"
+msgstr "Pot - 更新"
+
+msgid "Update"
+msgstr "更新"
+
+msgid "Current version"
+msgstr "当前版本"
+
+msgid "Check for Updates"
+msgstr "检查更新"
+
+msgid "Open Release Page"
+msgstr "打开发布页"
+
+msgid "No release notes."
+msgstr "暂无更新说明。"
+
+msgid "No release found."
+msgstr "未找到发布版本。"
+
+msgid "Check failed"
+msgstr "检查失败"
+
+msgid "Checking for updates..."
+msgstr "正在检查更新..."
+
+msgid "Update available"
+msgstr "发现新版本"
+
+msgid "You are up to date"
+msgstr "已是最新版本"
+
+msgid "Pot Desktop"
+msgstr "Pot 桌面版"
+
+msgid "Quit"
+msgstr "退出"
+
+msgid "TTS"
+msgstr "语音合成"
+
+msgid "Collection"
+msgstr "收藏"
+
+msgid "Reset"
+msgstr "重置"
+
+msgid "Search settings"
+msgstr "搜索设置"
+
+msgid "Hotkey Status"
+msgstr "快捷键状态"
+
+msgid "Hotkey feature disabled"
+msgstr "快捷键功能未启用"
+
+msgid "Build the app with the hotkey feature to enable global shortcuts."
+msgstr "请使用 hotkey 特性构建应用以启用全局快捷键。"
+
+msgid "Enable"
+msgstr "启用"
+
+msgid "Move Up"
+msgstr "上移"
+
+msgid "Move Down"
+msgstr "下移"
+
+msgid "Edit"
+msgstr "编辑"
+
+msgid "Delete"
+msgstr "删除"
+
+msgid "API Format"
+msgstr "接口格式"
+
+msgid "OpenAI-compatible API"
+msgstr "OpenAI 兼容接口"
+
+msgid "Anthropic API"
+msgstr "Anthropic 接口"
+
+msgid "Available Models"
+msgstr "可用模型"
+
+msgid "Fetch Models"
+msgstr "获取模型"
+
+msgid "Fetching Models..."
+msgstr "正在获取模型..."
+
+msgid "Runtime is not available"
+msgstr "运行时不可用"
+
+msgid "API key is required"
+msgstr "需要 API 密钥"
+
+msgid "No models found"
+msgstr "未找到模型"
+
+msgid "Retry Service"
+msgstr "重试该服务"
+
+msgid "Disable Failed Service"
+msgstr "禁用失败服务"
+
+msgid "Copy"
+msgstr "复制"

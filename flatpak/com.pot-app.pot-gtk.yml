@@ -1,0 +1,35 @@
+app-id: com.pot-app.pot-gtk
+runtime: org.freedesktop.Sdk
+runtime-version: "24.08"
+sdk: org.freedesktop.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.rust-stable
+command: pot-gtk
+finish-args:
+  - --share=network
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --share=ipc
+  - --device=dri
+  - --talk-name=org.freedesktop.Notifications
+build-options:
+  append-path: /usr/lib/sdk/rust-stable/bin
+  env:
+    CARGO_HOME: /run/build/pot-gtk/cargo
+modules:
+  - name: pot-gtk
+    buildsystem: simple
+    build-commands:
+      - cargo --offline build --release
+      - install -D target/release/pot-gtk /app/bin/pot-gtk
+      - install -D data/com.pot-app.pot-gtk.desktop /app/share/applications/com.pot-app.pot-gtk.desktop
+      - install -D data/com.pot-app.pot-gtk.metainfo.xml /app/share/metainfo/com.pot-app.pot-gtk.metainfo.xml
+      - install -D data/icons/scalable/apps/com.pot-app.pot-gtk.svg /app/share/icons/hicolor/scalable/apps/com.pot-app.pot-gtk.svg
+      - install -D data/icons/128x128/apps/com.pot-app.pot-gtk.png /app/share/icons/hicolor/128x128/apps/com.pot-app.pot-gtk.png
+      - install -D data/icons/64x64/apps/com.pot-app.pot-gtk.png /app/share/icons/hicolor/64x64/apps/com.pot-app.pot-gtk.png
+      - install -D data/icons/48x48/apps/com.pot-app.pot-gtk.png /app/share/icons/hicolor/48x48/apps/com.pot-app.pot-gtk.png
+      - install -D data/icons/32x32/apps/com.pot-app.pot-gtk.png /app/share/icons/hicolor/32x32/apps/com.pot-app.pot-gtk.png
+      - install -D data/icons/16x16/apps/com.pot-app.pot-gtk.png /app/share/icons/hicolor/16x16/apps/com.pot-app.pot-gtk.png
+    sources:
+      - type: dir
+        path: ..

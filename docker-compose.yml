@@ -1,0 +1,148 @@
+services:
+  # ── Build release binary ─────────────────────────────────────────────────
+  build:
+    build:
+      context: .
+      target: builder
+      args:
+        - FEATURES=${FEATURES:-tts,ocr,hotkey,tray}
+    image: pot-gtk:builder
+    volumes:
+      - cargo-cache:/usr/local/cargo/registry
+      - ./output:/output
+    command: >
+      bash -c "
+        set -e
+        echo '▸ Copying build artifacts...'
+        mkdir -p /output
+        cp target/release/pot-gtk /output/pot-gtk
+        chmod +x /output/pot-gtk
+        echo '✔ Binary: /output/pot-gtk'
+        if [ -d target/pot-gtk.mo ]; then
+          rm -rf /output/locales
+          cp -r target/pot-gtk.mo /output/locales
+          echo '✔ Locales: /output/locales/'
+        fi
+        if [ -d data/icons ]; then
+          rm -rf /output/icons
+          cp -r data/icons /output/icons
+          echo '✔ Icons: /output/icons/'
+        fi
+        cp data/com.pot-app.pot-gtk.desktop /output/com.pot-app.pot-gtk.desktop
+        echo 'Done.'
+      "
+
+  # ── Build .deb package ───────────────────────────────────────────────────
+  deb:
+    build:
+      context: .
+      target: deb-packager
+      args:
+        - FEATURES=${FEATURES:-}
+    image: pot-gtk:deb-packager
+    volumes:
+      - cargo-cache:/usr/local/cargo/registry
+      - ./output:/output
+    command: >
+      bash -c "
+        set -e
+        mkdir -p /output
+        cp target/debian/*.deb /output/ 2>/dev/null || true
+        if ls /output/*.deb 1>/dev/null 2>&1; then
+          echo '✔ Package:' /output/*.deb
+        else
+          echo '✖ No .deb file found' >&2; exit 1
+        fi
+        echo 'Done.'
+      "
+
+  # ── Build .rpm package ───────────────────────────────────────────────────
+  rpm:
+    build:
+      context: .
+      target: rpm-packager
+      args:
+        - FEATURES=${FEATURES:-}
+    image: pot-gtk:rpm-packager
+    volumes:
+      - cargo-cache:/usr/local/cargo/registry
+      - ./output:/output
+    command: >
+      bash -c "
+        set -e
+        mkdir -p /output
+        cp target/generate-rpm/*.rpm /output/ 2>/dev/null || true
+        if ls /output/*.rpm 1>/dev/null 2>&1; then
+          echo '✔ Package:' /output/*.rpm
+        else
+          echo '✖ No .rpm file found' >&2; exit 1
+        fi
+        echo 'Done.'
+      "
+
+  # ── Build AppImage ───────────────────────────────────────────────────────
+  appimage:
+    build:
+      context: .
+      target: appimage-packager
+      args:
+        - FEATURES=${FEATURES:-}
+    image: pot-gtk:appimage-packager
+    volumes:
+      - cargo-cache:/usr/local/cargo/registry
+      - ./output:/output
+    command: >
+      bash -c "
+        set -e
+        mkdir -p /output
+        cp target/Pot-GTK-x86_64.AppImage /output/ 2>/dev/null || true
+        if ls /output/*.AppImage 1>/dev/null 2>&1; then
+          echo '✔ Package:' /output/*.AppImage
+        else
+          echo '✖ No .AppImage file found' >&2; exit 1
+        fi
+        echo 'Done.'
+      "
+
+  # ── Interactive shell for development ─────────────────────────────────────
+  shell:
+    build:
+      context: .
+      target: base
+    image: pot-gtk:dev
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/src
+      - cargo-cache:/usr/local/cargo/registry
+    working_dir: /src
+
+  # ── Build with custom cargo flags ────────────────────────────────────────
+  custom:
+    build:
+      context: .
+      target: builder
+      args:
+        - CARGO_FLAGS=${CARGO_FLAGS:-}
+    image: pot-gtk:builder
+    volumes:
+      - cargo-cache:/usr/local/cargo/registry
+      - ./output:/output
+    command: >
+      bash -c "
+        set -e
+        mkdir -p /output
+        cp target/release/pot-gtk /output/pot-gtk
+        chmod +x /output/pot-gtk
+        echo '✔ Binary: /output/pot-gtk'
+        if [ -d data/icons ]; then
+          rm -rf /output/icons
+          cp -r data/icons /output/icons
+          echo '✔ Icons: /output/icons/'
+        fi
+        cp data/com.pot-app.pot-gtk.desktop /output/com.pot-app.pot-gtk.desktop
+        echo 'Done.'
+      "
+
+volumes:
+  cargo-cache:

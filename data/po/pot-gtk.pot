@@ -1,0 +1,362 @@
+# POT template for pot-gtk
+# Copyright (C) 2024 pot-app
+# This file is distributed under the same license as the pot-gtk package.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pot-gtk 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-29\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Pot"
+msgstr ""
+
+msgid "Pin"
+msgstr ""
+
+msgid "Unpin"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Swap"
+msgstr ""
+
+msgid "Translate"
+msgstr ""
+
+msgid "Speak"
+msgstr ""
+
+msgid "Collect"
+msgstr ""
+
+msgid "(dictionary)"
+msgstr ""
+
+msgid "Error"
+msgstr ""
+
+msgid "Pot - OCR"
+msgstr ""
+
+msgid "OCR Recognize"
+msgstr ""
+
+msgid "OCR Service"
+msgstr ""
+
+msgid "Copy text"
+msgstr ""
+
+msgid "Recognize"
+msgstr ""
+
+msgid "No image to recognize."
+msgstr ""
+
+msgid "Image read error"
+msgstr ""
+
+msgid "OCR error"
+msgstr ""
+
+msgid "Pot - Settings"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "About"
+msgstr ""
+
+msgid "Pot Desktop — GTK4 Edition"
+msgstr ""
+
+msgid "Version"
+msgstr ""
+
+msgid "Author"
+msgstr ""
+
+msgid "Repository"
+msgstr ""
+
+msgid "General"
+msgstr ""
+
+msgid "Proxy"
+msgstr ""
+
+msgid "Services"
+msgstr ""
+
+msgid "Hotkey"
+msgstr ""
+
+msgid "Server Port:"
+msgstr ""
+
+msgid "Language:"
+msgstr ""
+
+msgid "Theme:"
+msgstr ""
+
+msgid "System"
+msgstr ""
+
+msgid "Light"
+msgstr ""
+
+msgid "Dark"
+msgstr ""
+
+msgid "Enable Proxy:"
+msgstr ""
+
+msgid "Proxy Host:"
+msgstr ""
+
+msgid "Proxy Port:"
+msgstr ""
+
+msgid "No Proxy:"
+msgstr ""
+
+msgid "Source Language:"
+msgstr ""
+
+msgid "Auto Detect"
+msgstr ""
+
+msgid "Target Language:"
+msgstr ""
+
+msgid "Delete Newlines:"
+msgstr ""
+
+msgid "Close on Blur:"
+msgstr ""
+
+msgid "Hotkeys"
+msgstr ""
+
+msgid "Click a shortcut, press the new keys, then restart the app to apply the change. Press Esc to cancel."
+msgstr ""
+
+msgid "Selection Translate"
+msgstr ""
+
+msgid "Selection Translate:"
+msgstr ""
+
+msgid "Input Translate"
+msgstr ""
+
+msgid "Input Translate:"
+msgstr ""
+
+msgid "OCR Recognize:"
+msgstr ""
+
+msgid "OCR Translate"
+msgstr ""
+
+msgid "OCR Translate:"
+msgstr ""
+
+msgid "Add Service"
+msgstr ""
+
+msgid "Add"
+msgstr ""
+
+msgid "Select a service to add:"
+msgstr ""
+
+msgid "Configure"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Custom URL"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "Free"
+msgstr ""
+
+msgid "API"
+msgstr ""
+
+msgid "Auth Key"
+msgstr ""
+
+msgid "Provider"
+msgstr ""
+
+msgid "OpenAI"
+msgstr ""
+
+msgid "API Key"
+msgstr ""
+
+msgid "Model"
+msgstr ""
+
+msgid "Request URL"
+msgstr ""
+
+msgid "App ID"
+msgstr ""
+
+msgid "Secret Key"
+msgstr ""
+
+msgid "App Key"
+msgstr ""
+
+msgid "Key"
+msgstr ""
+
+msgid "Host"
+msgstr ""
+
+msgid "AnkiConnect URL"
+msgstr ""
+
+msgid "Deck"
+msgstr ""
+
+msgid "Note Type"
+msgstr ""
+
+msgid "Instance Name"
+msgstr ""
+
+msgid "Pot - Updater"
+msgstr ""
+
+msgid "Update"
+msgstr ""
+
+msgid "Current version"
+msgstr ""
+
+msgid "Check for Updates"
+msgstr ""
+
+msgid "Open Release Page"
+msgstr ""
+
+msgid "No release notes."
+msgstr ""
+
+msgid "No release found."
+msgstr ""
+
+msgid "Check failed"
+msgstr ""
+
+msgid "Checking for updates..."
+msgstr ""
+
+msgid "Update available"
+msgstr ""
+
+msgid "You are up to date"
+msgstr ""
+
+msgid "Pot Desktop"
+msgstr ""
+
+msgid "Quit"
+msgstr ""
+
+msgid "TTS"
+msgstr ""
+
+msgid "Collection"
+msgstr ""
+
+msgid "Reset"
+msgstr ""
+
+msgid "Search settings"
+msgstr ""
+
+msgid "Hotkey Status"
+msgstr ""
+
+msgid "Hotkey feature disabled"
+msgstr ""
+
+msgid "Build the app with the hotkey feature to enable global shortcuts."
+msgstr ""
+
+msgid "Enable"
+msgstr ""
+
+msgid "Move Up"
+msgstr ""
+
+msgid "Move Down"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "API Format"
+msgstr ""
+
+msgid "OpenAI-compatible API"
+msgstr ""
+
+msgid "Anthropic API"
+msgstr ""
+
+msgid "Available Models"
+msgstr ""
+
+msgid "Fetch Models"
+msgstr ""
+
+msgid "Fetching Models..."
+msgstr ""
+
+msgid "Runtime is not available"
+msgstr ""
+
+msgid "API key is required"
+msgstr ""
+
+msgid "No models found"
+msgstr ""
+
+msgid "Retry Service"
+msgstr ""
+
+msgid "Disable Failed Service"
+msgstr ""
+
+msgid "Copy"
+msgstr ""

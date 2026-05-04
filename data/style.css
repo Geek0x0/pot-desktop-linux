@@ -1,0 +1,226 @@
+/* Floating popup overlay — used by the undecorated translate window */
+.popup-overlay {
+    border-radius: 12px;
+}
+
+.popup-overlay.csd {
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.18),
+                0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+
+/* Result cards inside the translate results ListBox */
+.result-card {
+    padding: 10px 14px;
+    border-radius: 8px;
+}
+
+.result-card + .result-card {
+    margin-top: 6px;
+}
+
+button.pin-active {
+    background: @accent_bg_color;
+    color: @accent_fg_color;
+}
+
+.settings-window {
+    background: @window_bg_color;
+}
+
+.settings-header {
+    border-bottom: 1px solid alpha(@borders, 0.35);
+}
+
+.settings-search {
+    min-width: 220px;
+}
+
+.settings-sidebar {
+    padding: 8px;
+    border-radius: 8px;
+    background: alpha(@card_bg_color, 0.55);
+}
+
+.settings-nav-button {
+    min-height: 38px;
+    padding: 6px 10px;
+}
+
+.settings-nav-active {
+    background: alpha(@accent_bg_color, 0.16);
+    color: @accent_color;
+    font-weight: 700;
+}
+
+.settings-stack {
+    padding: 0;
+}
+
+.settings-page-scroll {
+    border-radius: 8px;
+}
+
+.settings-page {
+    padding: 16px;
+}
+
+.settings-section {
+    padding: 16px;
+    border-radius: 8px;
+    background: @card_bg_color;
+    box-shadow: 0 0 0 1px alpha(@borders, 0.45);
+}
+
+.settings-section-title {
+    font-weight: 700;
+}
+
+.settings-row {
+    min-height: 44px;
+    padding: 8px 0;
+    border-top: 1px solid alpha(@borders, 0.32);
+}
+
+.settings-toggle-row {
+    min-height: 48px;
+    padding: 6px 0;
+}
+
+.setting-toggle-label {
+    font-weight: 500;
+}
+
+.settings-section-title + .settings-row {
+    border-top: none;
+}
+
+.setting-label {
+    color: @window_fg_color;
+}
+
+.shortcut-capture-button {
+    min-width: 160px;
+}
+
+.settings-status-card {
+    padding: 12px;
+    border-radius: 8px;
+    background: alpha(@window_bg_color, 0.56);
+    box-shadow: 0 0 0 1px alpha(@borders, 0.32);
+}
+
+.status-ok {
+    color: @success_color;
+}
+
+.status-warning {
+    color: @warning_color;
+}
+
+.service-config-page {
+    padding: 16px;
+    border-radius: 8px;
+    background: @card_bg_color;
+    box-shadow: 0 0 0 1px alpha(@borders, 0.45);
+}
+
+.service-tabs {
+    padding: 4px;
+    border-radius: 8px;
+    background: alpha(@window_fg_color, 0.06);
+}
+
+.service-tab {
+    min-height: 34px;
+    padding: 5px 12px;
+    border-radius: 6px;
+}
+
+.service-tab:checked {
+    background: @card_bg_color;
+    box-shadow: 0 0 0 1px alpha(@borders, 0.45);
+}
+
+.service-list-scroll {
+    border-radius: 8px;
+}
+
+.service-list {
+    background: transparent;
+}
+
+.service-list row {
+    padding: 0;
+    background: transparent;
+}
+
+.service-card {
+    margin: 0 0 10px 0;
+    padding: 12px;
+    border-radius: 8px;
+    background: alpha(@window_bg_color, 0.62);
+    box-shadow: 0 0 0 1px alpha(@borders, 0.35);
+}
+
+.service-card-title {
+    font-weight: 700;
+}
+
+.service-card-controls button {
+    min-width: 34px;
+    min-height: 34px;
+}
+
+.service-card-toggle {
+    min-height: 36px;
+    padding: 0 10px 0 0;
+    margin-right: 2px;
+    border-right: 1px solid alpha(@borders, 0.26);
+}
+
+.service-card-actions {
+    padding-left: 2px;
+}
+
+.service-add-button {
+    min-height: 36px;
+}
+
+.settings-dialog {
+    background: @window_bg_color;
+}
+
+.service-edit-card {
+    padding: 4px 16px;
+    border-radius: 8px;
+    background: @card_bg_color;
+    box-shadow: 0 0 0 1px alpha(@borders, 0.45);
+}
+
+.service-field-row {
+    min-height: 48px;
+    padding: 10px 0;
+    border-top: 1px solid alpha(@borders, 0.30);
+}
+
+.service-field-row:first-child {
+    border-top: none;
+}
+
+.service-field-control {
+    min-height: 34px;
+}
+
+.service-model-list {
+    padding: 4px;
+}
+
+.service-model-row {
+    min-height: 34px;
+    padding: 6px 10px;
+}
+
+.updater-notes {
+    border-radius: 8px;
+    box-shadow: 0 0 0 1px alpha(@borders, 0.45);
+}
