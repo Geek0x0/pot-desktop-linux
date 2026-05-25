@@ -166,13 +166,13 @@ button.pin-active {
     font-weight: 700;
 }
 
-.service-card-controls button {
-    min-width: 34px;
-    min-height: 34px;
-}
-
 .service-card-actions {
     padding-left: 2px;
+}
+
+.service-card-actions button {
+    min-width: 34px;
+    min-height: 34px;
 }
 
 .service-add-button {
