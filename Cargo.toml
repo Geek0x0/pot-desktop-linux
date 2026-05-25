@@ -1,6 +1,6 @@
 [package]
 name = "pot-gtk"
-version = "1.0.1"
+version = "1.0.2"
 description = "Pot - GTK4 native translation and OCR desktop application"
 authors = ["pot-app"]
 license = "GPL-3.0-only"
