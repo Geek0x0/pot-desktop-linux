@@ -24,6 +24,7 @@ pub struct RecognizeModel {
 pub enum RecognizeMsg {
     Show,
     Recognize,
+    SetRecognizedText(String),
     CopyText,
     TranslateText,
     Pin,
@@ -253,6 +254,12 @@ impl Component for RecognizeModel {
             }
         });
 
+        let text_sender = sender.input_sender().clone();
+        widgets.text_view.buffer().connect_changed(move |buf| {
+            let text = buf.text(&buf.start_iter(), &buf.end_iter(), false);
+            let _ = text_sender.send(RecognizeMsg::SetRecognizedText(text.to_string()));
+        });
+
         load_cut_image(&widgets.image_view);
 
         ComponentParts { model, widgets }
@@ -303,6 +310,9 @@ impl Component for RecognizeModel {
 
                     let _ = out_sender.send(OcrCommandOutput { text, error: false });
                 });
+            }
+            RecognizeMsg::SetRecognizedText(text) => {
+                self.recognized_text = text;
             }
             RecognizeMsg::CopyText => {
                 clipboard::ClipboardMonitor::write_text(&self.recognized_text);

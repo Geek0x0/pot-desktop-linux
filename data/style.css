@@ -171,13 +171,6 @@ button.pin-active {
     min-height: 34px;
 }
 
-.service-card-toggle {
-    min-height: 36px;
-    padding: 0 10px 0 0;
-    margin-right: 2px;
-    border-right: 1px solid alpha(@borders, 0.26);
-}
-
 .service-card-actions {
     padding-left: 2px;
 }

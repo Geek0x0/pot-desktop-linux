@@ -406,19 +406,15 @@ fn rebuild_list(
         let switch = gtk::Switch::new();
         switch.set_active(enabled);
         switch.set_tooltip_text(Some(&i18n::t("Enable")));
-        switch.add_css_class("service-list-switch");
+        switch.set_valign(gtk::Align::Center);
+        switch.set_halign(gtk::Align::End);
         let key_c = key.to_string();
         let sender_c = sender.input_sender().clone();
         switch.connect_state_set(move |_sw, state| {
             let _ = sender_c.send(ServiceConfigMsg::ToggleEnable(key_c.clone(), state));
             gtk::glib::Propagation::Proceed
         });
-
-        let toggle_box = gtk::Box::new(gtk::Orientation::Horizontal, 0);
-        toggle_box.add_css_class("service-card-toggle");
-        toggle_box.set_valign(gtk::Align::Center);
-        toggle_box.append(&switch);
-        controls.append(&toggle_box);
+        controls.append(&switch);
 
         let action_box = gtk::Box::new(gtk::Orientation::Horizontal, 4);
         action_box.add_css_class("service-card-actions");

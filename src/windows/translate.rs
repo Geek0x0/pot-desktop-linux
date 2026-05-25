@@ -23,6 +23,7 @@ pub struct TranslationItem {
 
 #[derive(Debug, Clone)]
 pub struct TranslateCommandOutput {
+    request_id: u64,
     replace_instance_key: Option<String>,
     items: Vec<TranslationItem>,
 }
@@ -44,6 +45,7 @@ pub struct TranslateModel {
     lang_codes: Vec<String>,
     from_dropdown: gtk::DropDown,
     to_dropdown: gtk::DropDown,
+    active_request_id: u64,
     results_version: u64,
     rendered_results_version: Cell<u64>,
 }
@@ -266,6 +268,7 @@ impl Component for TranslateModel {
             lang_codes: lang_codes.clone(),
             from_dropdown: from_dropdown.clone(),
             to_dropdown: to_dropdown.clone(),
+            active_request_id: 0,
             results_version: 0,
             rendered_results_version: Cell::new(0),
         };
@@ -379,15 +382,30 @@ impl Component for TranslateModel {
         match msg {
             TranslateMsg::Show(text) => {
                 self.setting_source = true;
+                if self.text != text {
+                    self.active_request_id = self.active_request_id.wrapping_add(1);
+                    self.loading = false;
+                    self.translated_texts.clear();
+                    self.results_version = self.results_version.wrapping_add(1);
+                }
                 self.text = text;
 
                 if !self.text.is_empty() {
                     let _ = sender.input_sender().send(TranslateMsg::Translate);
+                } else {
+                    self.translated_texts.clear();
+                    self.results_version = self.results_version.wrapping_add(1);
                 }
             }
             TranslateMsg::SetSourceText(text) => {
                 if !self.setting_source {
-                    self.text = text;
+                    if self.text != text {
+                        self.text = text;
+                        self.active_request_id = self.active_request_id.wrapping_add(1);
+                        self.loading = false;
+                        self.translated_texts.clear();
+                        self.results_version = self.results_version.wrapping_add(1);
+                    }
                 }
                 self.setting_source = false;
             }
@@ -396,6 +414,8 @@ impl Component for TranslateModel {
                     return;
                 }
 
+                self.active_request_id = self.active_request_id.wrapping_add(1);
+                let request_id = self.active_request_id;
                 self.loading = true;
                 self.translated_texts.clear();
                 self.results_version = self.results_version.wrapping_add(1);
@@ -423,18 +443,24 @@ impl Component for TranslateModel {
                 let config = self.config.clone();
 
                 sender.spawn_command(move |out_sender| {
-                    let results = match crate::core::runtime::block_on(async {
-                        translate_instances(registry, service_list, text, from, to, config).await
-                    }) {
-                        Ok(r) => r,
-                        Err(_) => {
-                            log::error!("Translate: shared runtime not available");
-                            Vec::new()
-                        }
+                    let Some(handle) = crate::core::runtime::handle() else {
+                        log::error!("Translate: shared runtime not available");
+                        let _ = out_sender.send(TranslateCommandOutput {
+                            request_id,
+                            replace_instance_key: None,
+                            items: Vec::new(),
+                        });
+                        return;
                     };
-                    let _ = out_sender.send(TranslateCommandOutput {
-                        replace_instance_key: None,
-                        items: results,
+                    handle.spawn(async move {
+                        let results =
+                            translate_instances(registry, service_list, text, from, to, config)
+                                .await;
+                        let _ = out_sender.send(TranslateCommandOutput {
+                            request_id,
+                            replace_instance_key: None,
+                            items: results,
+                        });
                     });
                 });
             }
@@ -443,6 +469,8 @@ impl Component for TranslateModel {
                     return;
                 }
 
+                self.active_request_id = self.active_request_id.wrapping_add(1);
+                let request_id = self.active_request_id;
                 self.loading = true;
                 let text = self.text.clone();
                 let delete_newline = self
@@ -462,18 +490,24 @@ impl Component for TranslateModel {
                 let service_list = vec![instance_key.clone()];
 
                 sender.spawn_command(move |out_sender| {
-                    let results = match crate::core::runtime::block_on(async {
-                        translate_instances(registry, service_list, text, from, to, config).await
-                    }) {
-                        Ok(r) => r,
-                        Err(_) => {
-                            log::error!("Translate retry: shared runtime not available");
-                            Vec::new()
-                        }
+                    let Some(handle) = crate::core::runtime::handle() else {
+                        log::error!("Translate retry: shared runtime not available");
+                        let _ = out_sender.send(TranslateCommandOutput {
+                            request_id,
+                            replace_instance_key: Some(instance_key),
+                            items: Vec::new(),
+                        });
+                        return;
                     };
-                    let _ = out_sender.send(TranslateCommandOutput {
-                        replace_instance_key: Some(instance_key),
-                        items: results,
+                    handle.spawn(async move {
+                        let results =
+                            translate_instances(registry, service_list, text, from, to, config)
+                                .await;
+                        let _ = out_sender.send(TranslateCommandOutput {
+                            request_id,
+                            replace_instance_key: Some(instance_key),
+                            items: results,
+                        });
                     });
                 });
             }
@@ -491,6 +525,10 @@ impl Component for TranslateModel {
             }
             TranslateMsg::SwapLanguages => {
                 std::mem::swap(&mut self.from_lang, &mut self.to_lang);
+                self.active_request_id = self.active_request_id.wrapping_add(1);
+                self.loading = false;
+                self.translated_texts.clear();
+                self.results_version = self.results_version.wrapping_add(1);
                 if let Some(idx) = self.lang_codes.iter().position(|c| *c == self.from_lang) {
                     self.from_dropdown.set_selected(idx as u32);
                 }
@@ -499,10 +537,22 @@ impl Component for TranslateModel {
                 }
             }
             TranslateMsg::SetFromLang(lang) => {
-                self.from_lang = lang;
+                if self.from_lang != lang {
+                    self.from_lang = lang;
+                    self.active_request_id = self.active_request_id.wrapping_add(1);
+                    self.loading = false;
+                    self.translated_texts.clear();
+                    self.results_version = self.results_version.wrapping_add(1);
+                }
             }
             TranslateMsg::SetToLang(lang) => {
-                self.to_lang = lang;
+                if self.to_lang != lang {
+                    self.to_lang = lang;
+                    self.active_request_id = self.active_request_id.wrapping_add(1);
+                    self.loading = false;
+                    self.translated_texts.clear();
+                    self.results_version = self.results_version.wrapping_add(1);
+                }
             }
             TranslateMsg::FocusOut => {
                 if !self.pinned {
@@ -524,6 +574,10 @@ impl Component for TranslateModel {
         _sender: ComponentSender<Self>,
         _root: &Self::Root,
     ) {
+        if results.request_id != self.active_request_id {
+            return;
+        }
+
         self.loading = false;
         if let Some(instance_key) = &results.replace_instance_key {
             if let Some(item) = results.items.into_iter().next() {

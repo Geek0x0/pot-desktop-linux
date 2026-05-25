@@ -55,9 +55,10 @@ impl TranslateService for GoogleTranslate {
         // Check for dictionary mode (result[1] exists and is an array)
         if let Some(dict_data) = resp.get(1) {
             if dict_data.is_array() {
-                return Ok(TranslateResult::Dictionary(parse_dictionary(
-                    dict_data, &resp,
-                )));
+                let dictionary = parse_dictionary(dict_data, &resp);
+                if !dictionary.explanations.is_empty() || translated.is_empty() {
+                    return Ok(TranslateResult::Dictionary(dictionary));
+                }
             }
         }
 
@@ -104,7 +105,7 @@ fn parse_dictionary(
                 if parts.len() >= 2 {
                     let trait_name = parts[0].as_str().unwrap_or("").to_string();
                     let mut explains_list = Vec::new();
-                    if let Some(terms) = parts[2].as_array() {
+                    if let Some(terms) = parts.get(2).and_then(|v| v.as_array()) {
                         for term in terms {
                             if let Some(arr) = term.as_array() {
                                 if let Some(text) = arr.first().and_then(|v| v.as_str()) {

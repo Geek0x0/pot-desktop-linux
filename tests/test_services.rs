@@ -119,6 +119,30 @@ async fn google_translate_requests_text_segments() {
     }
 }
 
+#[tokio::test]
+async fn google_dictionary_short_group_does_not_panic() {
+    let mock = MockServer::start(|req| {
+        let body = r#"[[["hello","hello",null,null,10]],[["noun","short"]]]"#;
+        let resp = tiny_http::Response::from_string(body).with_header(
+            tiny_http::Header::from_bytes(&b"Content-Type"[..], &b"application/json"[..]).unwrap(),
+        );
+        let _ = req.respond(resp);
+    });
+    let svc = GoogleTranslate;
+    let req = TranslateRequest {
+        text: "hello".into(),
+        from: "en".into(),
+        to: "zh_cn".into(),
+        config: json!({ "custom_url": mock.base_url }),
+    };
+
+    let result = svc.translate(req).await.unwrap();
+    match result {
+        pot_gtk::services::types::TranslateResult::Text(text) => assert_eq!(text, "hello"),
+        _ => panic!("expected Text variant"),
+    }
+}
+
 #[test]
 fn google_name_and_default_config() {
     let svc = GoogleTranslate;
